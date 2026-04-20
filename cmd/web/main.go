@@ -1,31 +1,52 @@
 package main
 
 import (
-	"log"
+	"flag"
+	"log/slog"
 	"net/http"
+	"os"
 )
 
+type application struct {
+	logger *slog.Logger
+}
+
 func main() {
+
+	addr := flag.String("addr", ":4000", "HTTP network address")
+
+	flag.Parse()
+
+	logger := slog.New(slog.NewTextHandler(os.Stdout, nil))
+
+	 app := &application{
+        logger: logger,
+    }
+
 	mux := http.NewServeMux()
-	mux.HandleFunc("GET /{$}", home)
+	mux.HandleFunc("GET /{$}", app.home)
+
+	fileServer := http.FileServer(http.Dir("./ui/static/"))
+	mux.Handle("GET /static/", http.StripPrefix("/static", fileServer))
 
 	// List entities
-	mux.HandleFunc("GET /snippets", listSnippets)
+	mux.HandleFunc("GET /snippets", app.listSnippets)
 	// Form of creation
-	mux.HandleFunc("GET /snippets/create", newSnippetForm)
+	mux.HandleFunc("GET /snippets/create", app.newSnippetForm)
 	// Create one entity
-	mux.HandleFunc("POST /snippets", createSnippet)
+	mux.HandleFunc("POST /snippets", app.createSnippet)
 	// View one entity
-	mux.HandleFunc("GET /snippets/{id}", showSnippet)
+	mux.HandleFunc("GET /snippets/{id}", app.showSnippet)
 	// Form of edit
-	mux.HandleFunc("GET /snippets/{id}/edit", editSnippetForm)
-	// Update one entity 
-	mux.HandleFunc("PATCH /snippets/{id}", updateSnippet)
+	mux.HandleFunc("GET /snippets/{id}/edit", app.editSnippetForm)
+	// Update one entity
+	mux.HandleFunc("PATCH /snippets/{id}", app.updateSnippet)
 	// Delete one entity
-	mux.HandleFunc("DELETE /snippets/{id}", deleteSnippet)
+	mux.HandleFunc("DELETE /snippets/{id}", app.deleteSnippet)
 
-	log.Print("staring server on:4000")
+	logger.Info("starting server", "addr", *addr)
 
-	err := http.ListenAndServe(":4000", mux)
-	log.Fatal(err)
+	err := http.ListenAndServe(*addr, mux)
+	logger.Error(err.Error())
+	os.Exit(1)
 }

@@ -1,6 +1,23 @@
-[сравнение httprouter, chi, flow и gorilla/mux](https://www.alexedwards.net/blog/which-go-router-should-i-use)
-[Концепция интерфейсов](https://www.alexedwards.net/blog/interfaces-explained)
-[Формировние заголовков](https://lets-go.alexedwards.net/sample/02.06-customizing-responses.html)
-[Структура проекта](https://github.com/golang-standards/project-layout/blob/master/README_ru.md)
+- [сравнение httprouter, chi, flow и gorilla/mux](https://www.alexedwards.net/blog/which-go-router-should-i-use)
+- [Концепция интерфейсов](https://www.alexedwards.net/blog/interfaces-explained)
+- [Формировние заголовков](https://lets-go.alexedwards.net/sample/02.06-customizing-responses.html)
+- [Структура проекта](https://github.com/golang-standards/project-layout/blob/master/README_ru.md)
+- [обьяснение значения http.Hendler и ServeHTTP](https://lets-go.alexedwards.net/sample/02.10-the-http-handler-interface.html)
 
+- [Понимание мьютексов и состояния гонки](https://www.alexedwards.net/blog/understanding-mutexes)
+
+- [The Twelve-Factor App](https://12factor.net/)
+- [Работа с фоагами командной строки](file:///storage/new%20part/let's%20go/lets-go.html/03.01-managing-configuration-settings.html)
+
+- [Логирование](file:///storage/new%20part/let's%20go/lets-go.html/03.02-structured-logging.html)
+
+- [Организация доступа к базе данных в Go](https://www.alexedwards.net/blog/organising-database-access)
+
+## Остановился
 https://lets-go.alexedwards.net/sample/02.08-html-templating-and-inheritance.html
+
+
+
+Перечитать:
+- https://lets-go.alexedwards.net/sample/02.08-html-templating-and-inheritance.html
+- https://lets-go.alexedwards.net/sample/02.09-serving-static-files.html
