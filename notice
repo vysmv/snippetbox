@@ -1,0 +1,6 @@
+[сравнение httprouter, chi, flow и gorilla/mux](https://www.alexedwards.net/blog/which-go-router-should-i-use)
+[Концепция интерфейсов](https://www.alexedwards.net/blog/interfaces-explained)
+[Формировние заголовков](https://lets-go.alexedwards.net/sample/02.06-customizing-responses.html)
+[Структура проекта](https://github.com/golang-standards/project-layout/blob/master/README_ru.md)
+
+https://lets-go.alexedwards.net/sample/02.08-html-templating-and-inheritance.html
